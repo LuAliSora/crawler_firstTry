@@ -1,3 +1,4 @@
+from func_import import *
 import PtoP_class
 
 if __name__=="__main__":

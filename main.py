@@ -1,3 +1,4 @@
+from func_import import *
 import getPath_func
 import getPic_func
 

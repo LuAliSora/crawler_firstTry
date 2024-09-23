@@ -22,6 +22,7 @@ def net_picPaths(post_path):
     post_content = post_response.text.replace('\n', '')
     # write_func.write_postContent(post_content)
     picPath_tag += re.findall(r'src="'+baseSet.pic_root_path+r'(.*?)"', post_content)
+    # print("picPath_tag:",picPath_tag)
     return True,picPath_tag
 
 def download_pic(true_path,pic_local):
