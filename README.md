@@ -3,7 +3,7 @@
 
 ## To Start:
     1. Create "picFile" 
-    2. In "picFile", create "tags.txt" and write *{tags}* in it
+    2. In "picFile", create "tags.txt" and write {tags} in it
     3. Run "main.py" or "main_byClass.py"
 
 ## Note:
