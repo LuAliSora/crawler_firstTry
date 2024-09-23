@@ -9,7 +9,7 @@
 ## Note:
     1. Run "main.py: mode1 to get pic path, mode2 to download pic
     2. In "baseSet.py", change "User-Agent" if you need
-    3. "learn_re", "wall.py" are not used
+    3. "learn_re.py", "wall.py" are not used
 
 ## Problem:
     1. Net problem to access oversea web
