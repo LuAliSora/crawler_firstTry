@@ -6,8 +6,8 @@ import netRes_func
 def pages_in_tag(tag,pageStart,pageEnd):
     picID_list=[]
     for page in range(pageStart,pageEnd):
-        PageAndTag_str=rf"?page={page}&tags="+tag
-        # print(PageAndTag_str)
+        PageAndTag_str=f"?page={page}&tags="+tag
+        print(PageAndTag_str)
         tag_path=baseSet.web_root_path+PageAndTag_str
         flag,picID_res=netRes_func.net_picIDs(tag_path)
         # print(picID_res)
@@ -22,7 +22,7 @@ def get_picPath():
     picID_list=read_func.read_picIDs()
     picPath_list=[]
     for i,pid in enumerate(picID_list):
-        post_path=baseSet.web_root_path+rf"/show/{pid}"
+        post_path=baseSet.web_root_path+f"/show/{pid}"
         flag,picPath_res=netRes_func.net_picPaths(post_path)
         # print(picPath_res)
         if flag==False:

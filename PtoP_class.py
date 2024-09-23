@@ -14,7 +14,7 @@ class PathToPic:
     def pages_in_tag(self,tag,pageStart,pageEnd):
         picID_tag=[]
         for page in range(pageStart,pageEnd):
-            PageAndTag_str=rf"?page={page}&tags="+tag
+            PageAndTag_str=f"?page={page}&tags="+tag
             print(PageAndTag_str)
             tag_path=baseSet.web_root_path+PageAndTag_str
             flag,picID_res=netRes_func.net_picIDs(tag_path)
@@ -28,7 +28,7 @@ class PathToPic:
     def get_picPath(self,tagIndex):
         picPath_tag=[]
         for i,pid in enumerate(self.picID_list[tagIndex]):
-            post_path=baseSet.web_root_path+rf"/show/{pid}"
+            post_path=baseSet.web_root_path+f"/show/{pid}"
             flag,picPath_res=netRes_func.net_picPaths(post_path)
             # print(picPath_res)
             if flag==False:
@@ -44,8 +44,8 @@ class PathToPic:
         pair_inTag=zip(self.picID_list[tagIndex],self.picPath_list[tagIndex])
         for i,data in enumerate(pair_inTag):
             id,path=data[0],data[1]
-            pic_local=childFile+id+r'.jpg'
-            true_path=baseSet.pic_root_path+rf"{path}"
+            pic_local=childFile+id+'.jpg'
+            true_path=baseSet.pic_root_path+f"{path}"
             pic_falg=netRes_func.download_pic(true_path,pic_local)
             if i%10==0:
                 print("download_pic_Num:",i+1)

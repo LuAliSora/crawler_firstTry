@@ -24,8 +24,8 @@ def get_PicInTag():
             childFile=write_func.make_tagFile(tags_list[tag_index])
             picBatch+=int(picSum_list[tag_index])
             print(tags_list[tag_index],i,picBatch)
-        pic_local=childFile+id+r'.jpg'
-        true_path=baseSet.pic_root_path+rf"{path}"
+        pic_local=childFile+id+'.jpg'
+        true_path=baseSet.pic_root_path+f"{path}"
         netRes_func.download_pic(true_path,pic_local)
         if i%10==0:
             print("download_pic_Num:",i+1)
