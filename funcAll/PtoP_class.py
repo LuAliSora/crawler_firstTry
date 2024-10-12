@@ -44,17 +44,19 @@ class PathToPic:
     def get_PicInTag(self, tagIndex):
         tag=self.tag_list[tagIndex]
         tagFolder= localF_func.makeFolder([baseSet.picSave, tag])
-        
+
         pair_inTag=zip(self.picID_list[tagIndex],self.picPath_list[tagIndex])
+        repeatNum=0
         for i, data in enumerate(pair_inTag):
             id, path=data[0], data[1]
             pic_local=tagFolder+f"/{id}.jpg"
             true_path=baseSet.pic_root_path+path
-            flag=netRes_func.download_pic(true_path, pic_local)
-            if i%10==0:
-                print("download_pic_Num:", i+1)
-            if flag==False:
+            res=netRes_func.download_pic(true_path, pic_local)
+            if res[0]==False:
                 break
+            repeatNum+=res[1]
+            if i%10==0:
+                print("download, repeat:", i+1-repeatNum, repeatNum)
 
 
     def pp_main(self):
