@@ -1,7 +1,3 @@
-from funcAll import *
-
-
-
 from pathlib import Path
 import sys
 
@@ -19,6 +15,8 @@ def addPart(partList)->None:
     [sys.path.append(str(tempDir/part)) for part in partList]
 
 addPart(partL)
+
+from funcAll import *
 
 if __name__=="__main__":
     # addPart(partL)
