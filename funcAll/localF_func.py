@@ -7,7 +7,7 @@ def makeFolder(fileL):
     tempPath=Path(*fileL)
     if tempPath.is_dir()==False:
         tempPath.mkdir()
-    print(tempPath)
+    # print(tempPath)
     return str(tempPath)
 
 

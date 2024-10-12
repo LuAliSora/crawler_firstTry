@@ -13,7 +13,7 @@ def net_picData(path, idx):
         print(f"picData_NetWrong[{idx}]:", page_response.status_code)
         return False, picData
     content = page_response.text.replace('\n', '')
-    localF_func.writePage(content,idx=idx)
+    # localF_func.writePage(content,idx=idx)
     if idx==0:
         picData += re.findall(r'<a class="thumb" href="/post/show/(\d+)" >', content)
     elif idx==1:
