@@ -60,6 +60,9 @@ class PathToPic:
     def pp_main(self):
         pageStart=int(input("pageStart:"))
         pageNum=int(input("pageNum:"))
+
+        localF_func.makeFolder([baseSet.picSave])
+        
         for i,tag in enumerate(self.tag_list):
             localF_func.makeFolder([baseSet.recSave, tag])
             self.get_tagPicID(tag,pageStart,pageStart+pageNum)

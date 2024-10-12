@@ -11,6 +11,21 @@ def makeFolder(fileL):
     return str(tempPath)
 
 
+def read_tags():
+    filePath=baseSet.recSave+"tags.txt"
+    with open(filePath, "r", encoding='utf-8') as f_tags: 
+        tag_list=f_tags.read().splitlines()
+    [print(i, tag) for i, tag in enumerate(tag_list)]
+    return tag_list
+
+
+def readList_inTag(tag, idx):
+    filePath=baseSet.recSave+f"{tag}/"+baseSet.listName[idx]
+    with open(filePath, "r", encoding='utf-8') as f_recTL:    
+        picData=f_recTL.read().splitlines()
+    return picData
+
+
 def writePage(content, idx):
     filePath=baseSet.recSave+baseSet.pageName[idx]
     with open(filePath, "w", encoding='utf-8') as f_recP:    
@@ -23,15 +38,3 @@ def writeList_inTag(content, tag, idx):
         [f_recTL.write(picData+'\n') for picData in content]
 
 
-def read_tags():
-    filePath=baseSet.recSave+"tags.txt"
-    with open(filePath, "r", encoding='utf-8') as f_tags: 
-        tag_list=f_tags.read().splitlines()
-    return tag_list
-
-
-def readList_inTag(tag, idx):
-    filePath=baseSet.recSave+f"{tag}/"+baseSet.listName[idx]
-    with open(filePath, "r", encoding='utf-8') as f_recTL:    
-        picData=f_recTL.read().splitlines()
-    return picData

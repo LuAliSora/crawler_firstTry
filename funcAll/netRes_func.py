@@ -16,7 +16,7 @@ def net_picData(path, idx):
     if idx==0:
         picData += re.findall(r'<a class="thumb" href="/post/show/(\d+)" >', content)
     elif idx==1:
-        picData += re.findall(r'src="'+baseSet.pic_root_path+r'(.*?)"', content)
+        picData += re.findall(rf'src="{baseSet.pic_root_path}(.*?)"', content)
     # print(f"picData[{idx}]",picData)
     return True, picData
 
