@@ -15,7 +15,6 @@ def read_tags():
     filePath=baseSet.recSave+"tags.txt"
     with open(filePath, "r", encoding='utf-8') as f_tags: 
         tag_list=f_tags.read().splitlines()
-    [print(i, tag) for i, tag in enumerate(tag_list)]
     return tag_list
 
 

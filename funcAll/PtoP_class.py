@@ -22,15 +22,13 @@ class PathToPic:
                 break
             picID_list+=picID_res
         localF_func.writeList_inTag(picID_list, tag, idx=stateIdx)
-        self.picID_list.append(picID_list)
+        self.picID_list=picID_list
 
-    def get_tagPicPath(self, tagIndex):
-        tag=self.tag_list[tagIndex]
+    def get_tagPicPath(self, tag):
         # picID_list=read_func.readList_inTag(tag, idx=0)
-        picID_list=self.picID_list[tagIndex]
         picPath_list=[]
         stateIdx=1
-        for i, pid in enumerate(picID_list):
+        for i, pid in enumerate(self.picID_list):
             post_path= baseSet.web_root_path+f"/show/{pid}"
             flag, picPath_res=netRes_func.net_picData(post_path, idx=stateIdx)
             if flag==False:
@@ -38,14 +36,17 @@ class PathToPic:
             picPath_list+=picPath_res
             if i%10==0:
                 print("get_picPath_Num:",i+1)
-        localF_func.writeList_inTag(picID_list, tag, idx=stateIdx)
-        self.picPath_list.append(picPath_list)
+        localF_func.writeList_inTag(picPath_list, tag, idx=stateIdx)
+        self.picPath_list=picPath_list
 
-    def get_PicInTag(self, tagIndex):
-        tag=self.tag_list[tagIndex]
+    def get_PicInTag(self, tag):
+        if len(self.picID_list)*len(self.picPath_list)==0:
+            self.picID_list=localF_func.readList_inTag(tag, idx=0)
+            self.picPath_list=localF_func.readList_inTag(tag, idx=1)
+
+        pair_inTag=zip(self.picID_list,self.picPath_list)
         tagFolder= localF_func.makeFolder([baseSet.picSave, tag])
 
-        pair_inTag=zip(self.picID_list[tagIndex],self.picPath_list[tagIndex])
         repeatNum=0
         for i, data in enumerate(pair_inTag):
             id, path=data[0], data[1]
@@ -60,16 +61,19 @@ class PathToPic:
 
 
     def pp_main(self):
+        state=input("state: 0->GetPath&&LoadPic; 1->LoadPic;\n")
         pageStart=int(input("pageStart:"))
         pageNum=int(input("pageNum:"))
 
         localF_func.makeFolder([baseSet.picSave])
         
         for i,tag in enumerate(self.tag_list):
-            localF_func.makeFolder([baseSet.recSave, tag])
-            self.get_tagPicID(tag, pageStart, pageStart+pageNum)
-            self.get_tagPicPath(i)
-            self.get_PicInTag(i)
+            print(f"[{i}]: {tag}")
+            if int(state)==0:
+                localF_func.makeFolder([baseSet.recSave, tag])
+                self.get_tagPicID(tag, pageStart, pageStart+pageNum)
+                self.get_tagPicPath(tag)
+            self.get_PicInTag(tag)
 
 
 
