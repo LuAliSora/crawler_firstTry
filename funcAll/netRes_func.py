@@ -1,7 +1,8 @@
 import requests  #用于向网站发送请求  
 import re
+
 import baseSet
-import write_func
+import localF_func
 
 
 def net_picData(path, idx):
@@ -11,7 +12,7 @@ def net_picData(path, idx):
         print(f"picData_NetWrong[{idx}]:", page_response.status_code)
         return False, picData
     content = page_response.text.replace('\n', '')
-    write_func.writePage(content,idx=idx)
+    localF_func.writePage(content,idx=idx)
     if idx==0:
         picData += re.findall(r'<a class="thumb" href="/post/show/(\d+)" >', content)
     elif idx==1:

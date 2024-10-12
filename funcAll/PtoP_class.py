@@ -1,12 +1,11 @@
-
-import write_func
-import read_func
-import netRes_func
 import baseSet
+import localF_func
+import netRes_func
+
 
 class PathToPic:
     def __init__(self):
-        self.tag_list= read_func.read_tags()
+        self.tag_list= localF_func.read_tags()
         self.picID_list=[]
         self.picPath_list=[]
         # write_func.init_record()
@@ -44,7 +43,7 @@ class PathToPic:
 
     def get_PicInTag(self, tagIndex):
         tag=self.tag_list[tagIndex]
-        tagFolder= write_func.makeFolder([baseSet.picSave, tag])
+        tagFolder= localF_func.makeFolder([baseSet.picSave, tag])
         
         pair_inTag=zip(self.picID_list[tagIndex],self.picPath_list[tagIndex])
         for i, data in enumerate(pair_inTag):
@@ -62,7 +61,7 @@ class PathToPic:
         pageStart=int(input("pageStart:"))
         pageNum=int(input("pageNum:"))
         for i,tag in enumerate(self.tag_list):
-            write_func.makeFolder([baseSet.recSave, tag])
+            localF_func.makeFolder([baseSet.recSave, tag])
             self.get_tagPicID(tag,pageStart,pageStart+pageNum)
             self.get_tagPicPath(i)
             self.get_PicInTag(i)
