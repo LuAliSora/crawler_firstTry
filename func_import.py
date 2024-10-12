@@ -16,8 +16,6 @@ def addPart(partList)->None:
 
 addPart(partL)
 
-from funcAll import *
-
 if __name__=="__main__":
     # addPart(partL)
     print(sys.path)
