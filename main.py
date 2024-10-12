@@ -8,7 +8,7 @@ if __name__=="__main__":
     if mode=="1":
         getPath_func.getPath_main()
     elif mode=="2":
-        getPic_func.get_PicInTag()
+        getPic_func.getPic_main()
     else :
         print("Wrong!")
         

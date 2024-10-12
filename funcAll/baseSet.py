@@ -5,11 +5,15 @@ headers = {
 
 web_root_path="https://yande.re/post"
 pic_root_path="https://files.yande.re/sample/"
-file_save="picFile/"
 
-timeout_getID=30
-timeout_getPath=120
-timeout_getPic=300
+picSave="picFile/"
+recSave="recFile/"
+
+pageName=["tagCont.html", "postCont.html"]
+listName=["picIDs.txt", "picPaths.txt", "picSum.txt"]
+timeoutL=[30, 120, 300]
+
+
 
 
 

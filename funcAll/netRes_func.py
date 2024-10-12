@@ -1,32 +1,27 @@
 import requests  #用于向网站发送请求  
 import re
 import baseSet
+import write_func
 
-def net_picIDs(tag_path):
-    picID_page=[]
-    tag_response = requests.get(tag_path, headers=baseSet.headers, timeout=baseSet.timeout_getID) 
-    if(tag_response.status_code!=200): 
-        print("Get_picID_NetWrong:",tag_response.status_code)
-        return False,picID_page
-    tag_content = tag_response.text.replace('\n', '')
-    # write_func.write_tagContent(tag_content)
-    picID_page += re.findall(r'<a class="thumb" href="/post/show/(\d+)" >', tag_content)
-    return True,picID_page
 
-def net_picPaths(post_path):
-    picPath_tag=[]
-    post_response = requests.get(post_path, headers=baseSet.headers, timeout=baseSet.timeout_getPath)  
-    if(post_response.status_code!=200):
-        print("Get_picPath_NetWrong:",post_response.status_code)
-        return False,picPath_tag
-    post_content = post_response.text.replace('\n', '')
-    # write_func.write_postContent(post_content)
-    picPath_tag += re.findall(r'src="'+baseSet.pic_root_path+r'(.*?)"', post_content)
-    # print("picPath_tag:",picPath_tag)
-    return True,picPath_tag
+def net_picData(path, idx):
+    picData=[]
+    page_response = requests.get(path, headers=baseSet.headers, timeout=baseSet.timeoutL[idx])
+    if(page_response.status_code!=200): 
+        print(f"picData_NetWrong[{idx}]:", page_response.status_code)
+        return False, picData
+    content = page_response.text.replace('\n', '')
+    write_func.writePage(content,idx=idx)
+    if idx==0:
+        picData += re.findall(r'<a class="thumb" href="/post/show/(\d+)" >', content)
+    elif idx==1:
+        picData += re.findall(r'src="'+baseSet.pic_root_path+r'(.*?)"', content)
+    # print(f"picData[{idx}]",picData)
+    return True, picData
 
-def download_pic(true_path,pic_local):
-    pic_response = requests.get(true_path, headers=baseSet.headers, timeout=baseSet.timeout_getPic)  
+
+def download_pic(true_path, pic_local, idx=2):
+    pic_response = requests.get(true_path, headers=baseSet.headers, timeout=baseSet.timeoutL[idx])  
     # print(pic_response.status_code)
     if(pic_response.status_code!=200):
         print("Download_pic_NetWrong:",pic_response.status_code)

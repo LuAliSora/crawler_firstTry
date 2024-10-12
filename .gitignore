@@ -161,6 +161,7 @@ cython_debug/
 
 #others
 picFile/
+recFile/
 *.jpg
 *.png
 *.bmp
