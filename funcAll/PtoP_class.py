@@ -21,7 +21,7 @@ class PathToPic:
             if flag==False:
                 break
             picID_list+=picID_res
-        # write_func.writeList_inTag(picID_list, tag, idx=stateIdx)
+        localF_func.writeList_inTag(picID_list, tag, idx=stateIdx)
         self.picID_list.append(picID_list)
 
     def get_tagPicPath(self, tagIndex):
@@ -38,7 +38,7 @@ class PathToPic:
             picPath_list+=picPath_res
             if i%10==0:
                 print("get_picPath_Num:",i+1)
-        # write_func.writeList_inTag(picID_list, tag, idx=stateIdx)
+        localF_func.writeList_inTag(picID_list, tag, idx=stateIdx)
         self.picPath_list.append(picPath_list)
 
     def get_PicInTag(self, tagIndex):
@@ -66,7 +66,7 @@ class PathToPic:
         localF_func.makeFolder([baseSet.picSave])
         
         for i,tag in enumerate(self.tag_list):
-            # localF_func.makeFolder([baseSet.recSave, tag])
+            localF_func.makeFolder([baseSet.recSave, tag])
             self.get_tagPicID(tag, pageStart, pageStart+pageNum)
             self.get_tagPicPath(i)
             self.get_PicInTag(i)
