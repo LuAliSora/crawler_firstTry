@@ -4,14 +4,18 @@ headers = {
 }  
 
 web_url="https://yande.re/post"
-pic_url="https://files.yande.re/sample/"
+pic_url="https://files.yande.re/"
+
+preName=[r'<a class="thumb" href="/post/show/(\d+)" >', 
+         r'"sample_url":"(.*?)"', 
+         r'id="highres" href="(.*?)"']
 
 picSave="picFile/"
 recSave="recFile/"
 
 pageName=["tagCont.html", "postCont.html"]
 listName=["picIDs.txt", "picPaths.txt", "picSum.txt"]
-timeoutL=[30, 300, 600]
+timeoutL=[30, 300, 600, 6000]
 
 
 

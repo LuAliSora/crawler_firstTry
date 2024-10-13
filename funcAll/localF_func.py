@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 
 import baseSet
 
@@ -36,4 +37,8 @@ def writeList_inTag(content, tag, idx):
     with open(filePath, "w", encoding='utf-8') as f_recTL:    
         [f_recTL.write(picData+'\n') for picData in content]
 
+
+def get_picType(pic_net):
+    pattern = r'\.(jpg|png|bmp)$'
+    return re.search(pattern, pic_net).group()  
 
