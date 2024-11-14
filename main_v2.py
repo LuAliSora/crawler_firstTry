@@ -21,27 +21,27 @@ def get_args() -> argparse.Namespace:
         help="Image quality: 0->Low; 1->High"
     )
     parser.add_argument(
-        "--pageS",
+        "--pSt",
         type=int,
         default=1,
-        help="pageStart>=1"
+        help="PageStart>=1"
     )
     parser.add_argument(
-        "--pageN",
+        "--pN",
         type=int,
         default=1,
-        help="pageNum>=1"
+        help="PageNum>=1"
     )
     # print(parser.parse_args())
     return parser.parse_args()
 
 def main():
     args=get_args()
-    if(args.pageS<1 or args.pageN<1):
-        raise Exception("pageStart must >=1; pageNum must >=1")
+    if(args.pSt<1 or args.pN<1):
+        raise Exception("PageStart must >=1; PageNum must >=1")
     
     ppwork=PtoP_class.PathToPic(args.imgQ)
-    ppwork.pp_main(args.mode, args.pageS, args.pageN)
+    ppwork.pp_main(args.mode, args.pSt, args.pN)
     
 
 if __name__=="__main__":
