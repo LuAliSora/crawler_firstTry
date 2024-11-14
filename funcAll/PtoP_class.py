@@ -4,11 +4,11 @@ import netRes_func
 
 
 class PathToPic:
-    def __init__(self):
+    def __init__(self, imgQ):
         self.tag_list= localF_func.read_tags()
         self.picID_list=[]
         self.picPath_list=[]
-        self.picQ_idx=0
+        self.picQ_idx=imgQ
         # write_func.init_record()
     
     def clearList(self):
@@ -65,12 +65,7 @@ class PathToPic:
                 print("Download, Repeat (Num):", i+1-repeatNum, repeatNum)
 
 
-    def pp_main(self):
-        self.picQ_idx=int(input("picQuality(0 < 1):"))
-        state=int(input("Mode(0->GetPath&&LoadPic; 1->LoadPic;):"))
-        pageStart=int(input("PageStart:"))
-        pageNum=int(input("PageNum:"))
-
+    def pp_main(self, state, pageStart, pageNum):
         localF_func.makeFolder([baseSet.picSave])
         
         for i,tag in enumerate(self.tag_list):
