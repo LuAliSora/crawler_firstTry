@@ -1,6 +1,6 @@
 # crawler_firstTry
     Get pic from a web
-
+    based on re
 ## To Start:
     1. Create "recFile"
     2. In "recFile", create "tags.txt" and write {tags} in it
